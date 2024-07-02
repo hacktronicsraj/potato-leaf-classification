@@ -8,24 +8,8 @@ import tensorflow as tf
 
 app = FastAPI()
 
-# Define the origins that you want to allow
-origins = [
-    "http://localhost",
-    "http://localhost:3000",  # Add your frontend URL here if different
-    "null",  # Allow requests from null origin (for local file access)
-]
-
-# Configure CORS middleware
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["POST"],  # Adjust based on your allowed methods
-    allow_headers=["*"],  # Adjust based on your allowed headers
-)
-
 # Load your TensorFlow model and class names
-MODEL = tf.keras.models.load_model("../potatoes.h5")
+MODEL = tf.keras.models.load_model("potatoes.h5")
 CLASS_NAMES = ["Early Blight", "Late Blight", "Healthy"]
 
 # Define your endpoints
